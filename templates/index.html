@@ -1,0 +1,94 @@
+
+    
+
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Text Generation and NER</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            background-color: #7f9b0f;
+            color: #020a02;
+        }
+        form {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        textarea {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: none;
+        }
+        button {
+            margin-top: 25px;
+            background-color: #137e0a;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            position: relative;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        h2 {
+            color: #010901;
+            background-color: #e5e6e3;
+            margin-top: 30px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background: #e2e2e2;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .PER {
+            color: blue;
+        }
+        .ORG {
+            color: green;
+        }
+        .LOC {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Named Entity Recognition (NER)</h1>
+    <form method="POST">
+        <textarea name="text" placeholder="Enter the text here to test NER" rows="20" cols="100"></textarea>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <h2>Extracted Entities</h2>
+    <ul>
+        {% for entity in entities %}
+            <li class="{{ entity['entity_group'] }}">
+                {{ entity['word'] }} ({{ entity['entity_group'] }})
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
